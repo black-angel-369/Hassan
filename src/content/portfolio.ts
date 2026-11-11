@@ -20,6 +20,8 @@ export const site = {
   email: "muhammadhassannadeem37@gmail.com",
   phone: "+923219086370",
   phoneDisplay: "+92 321 9086370",
+  /** CV served from /public; the download attribute sets the saved filename. */
+  cv: { href: "/Hassan_Nadeem_CV.pdf", fileName: "Muhammad_Hassan_Nadeem_CV.pdf" },
   /** Add real profile URLs here (e.g. { label: "GitHub", href: "https://github.com/..." }). */
   socials: [] as { label: string; href: string }[],
 } as const;

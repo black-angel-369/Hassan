@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { nav, site } from "@/content/portfolio";
 import { LogoMark } from "@/components/ui/Logo";
@@ -108,7 +108,7 @@ export function Navbar() {
         >
           <a href="#home" className="flex min-h-11 items-center gap-2.5 rounded-full" aria-label={`${site.name} — home`}>
             <LogoMark className="size-7 text-[var(--color-fg)]" />
-            <span className="font-display text-[0.95rem] font-semibold tracking-tight">
+            <span className="font-display text-[0.95rem] font-semibold tracking-tight whitespace-nowrap">
               {site.shortName}
               <span className="text-[var(--color-cyan)]">.</span>
             </span>
@@ -122,7 +122,7 @@ export function Navbar() {
                   <a
                     href={`#${item.id}`}
                     aria-current={isActive ? "location" : undefined}
-                    className={`relative flex min-h-10 items-center rounded-full px-3.5 text-sm transition-colors duration-300 ${
+                    className={`relative flex min-h-10 items-center rounded-full px-2.5 text-sm xl:px-3.5 transition-colors duration-300 ${
                       isActive ? "text-[var(--color-fg)]" : "text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
                     }`}
                   >
@@ -142,8 +142,18 @@ export function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
+              href={site.cv.href}
+              download={site.cv.fileName}
+              className="hidden min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[var(--color-line-strong)] px-4 text-sm font-medium text-[var(--color-fg)] transition-colors duration-300 hover:border-[var(--color-cyan)] hover:text-[var(--color-cyan-soft)] sm:inline-flex"
+            >
+              <Download className="size-4" aria-hidden="true" />
+              <span>
+                <span className="lg:max-xl:sr-only">Download </span>CV
+              </span>
+            </a>
+            <a
               href="#contact"
-              className="hidden min-h-10 items-center rounded-full bg-[var(--color-fg)] px-4 text-sm font-medium text-[var(--color-ink-950)] transition-colors duration-300 hover:bg-[var(--color-cyan-soft)] sm:inline-flex"
+              className="hidden min-h-10 shrink-0 items-center whitespace-nowrap rounded-full bg-[var(--color-fg)] px-4 text-sm font-medium text-[var(--color-ink-950)] transition-colors duration-300 hover:bg-[var(--color-cyan-soft)] sm:inline-flex"
             >
               Let’s talk
             </a>
@@ -202,6 +212,15 @@ export function Navbar() {
                 </motion.li>
               ))}
             </ul>
+            <a
+              href={site.cv.href}
+              download={site.cv.fileName}
+              onClick={() => close(false)}
+              className="mb-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--color-fg)] px-6 text-sm font-medium text-[var(--color-ink-950)] transition-colors hover:bg-[var(--color-cyan-soft)]"
+            >
+              <Download className="size-4" aria-hidden="true" />
+              Download CV
+            </a>
             <div className="space-y-1 font-mono text-sm text-[var(--color-fg-muted)]">
               <a className="block py-1.5 hover:text-[var(--color-fg)]" href={`mailto:${site.email}`}>
                 {site.email}
